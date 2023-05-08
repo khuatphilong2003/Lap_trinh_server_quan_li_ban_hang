@@ -1,0 +1,48 @@
+<%-include('../inc/top.ejs',{page:"info"}) %>
+
+    <!-- noidung-body -->
+    <div class="container-fluid">
+ 
+
+                <div class="row pt-1">
+                    <div class="col-md-6 fw-bold fs-4">
+                        Chi tiết sản phẩm
+                    </div>
+                </div>
+                <div class=" pb-4 mt-5 d-flex justify-content-center" style="border-radius: 5px;">
+                    <div
+                        class="col-auto"
+                    >
+                    <img src="<%=objSPE.image%>" alt="" style="height: 200px; margin-right: 30px;">
+                </div>
+                    <div class="col-auto" style="margin-top: 20px;">
+                       <div style="font-size: 30px;font-weight: bold;">
+                        <%=objSPE.name%>
+                       </div>
+                       <div style="font-size: 25px;font-weight: bold;color: red;">
+                        <%=objSPE.price%>vnđ
+                       </div>
+                       <div>
+                        Thể loại
+                       </div>
+                       <div style="font-size: 15px;font-weight: bold">
+                        <%=objSPE.id_category.name%>
+                       </div>
+                       <div style="border: red solid 1px;border-radius: 10px;">
+                        <div class="bg-danger" style="border-top-left-radius: 10px;border-top-right-radius: 10px; padding: 5px; color: white;">
+                            Mô tả chi tiết
+                        </div>
+                        <div style="padding: 5px;">
+                            <%=objSPE.des %>
+                        </div>
+
+                       </div>
+                    </div>
+
+                </div>
+
+    </div>
+
+    <!-- noidung-body -->
+    <!-- Footer -->
+    <%-include('../inc/bottom.ejs',{page:"product"}) %>

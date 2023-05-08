@@ -1,0 +1,51 @@
+<%-include('../inc/top.ejs',{page:"editCategory"}) %>
+
+    <!-- noidung-body -->
+    <div class="container-fluid">
+        <div>
+            <% if(thongBao=="Tên không được bỏ trống" ){ %>
+                <div class="bg-danger p-2 text-white d-flex justify-content-center">
+                    <%=thongBao%>
+                </div>
+                <% } %>
+
+        </div>
+        <div>
+            <% if(thongBao =="Sửa thành công" ){ %>
+                <div class="bg-primary p-2 text-white d-flex justify-content-center">
+                    <%=thongBao%>
+                </div>
+                <% } %>
+        </div>
+       
+
+
+        <div class="row pt-1">
+            <div class="col-md-6 fw-bold fs-4">
+                Sửa thể loại
+            </div>
+        </div>
+        <div class="bg-dark-subtle pb-4 mt-5 d-flex justify-content-center" style="border-radius: 5px;">
+            <div style="width: 300px; margin-top: 20px;">
+                <form method="post" enctype="multipart/form-data">
+                    <div class="mb-3">
+                        <label for="exampleInputEmail1" class="form-label">Tên thể loại</label>
+                        <input type="text" class="form-control" placeholder="Nhập email" value="<%=objCategoryE.name%>"
+                            name="name">
+                    </div>
+                    <div>
+                        <img src="<%=objCategoryE.image%>" alt="" style="height: 50px;">
+                    </div>
+                    <div class=" mb-4">
+                        <label for="formFile" class="form-label">Sửa ảnh</label>
+                        <input class="form-control" type="file" id="img" name="img">
+                    </div>
+
+                    <button type="submit" class="btn btn-primary" style="width: 300px;">Lưu</button>
+                </form>
+            </div>
+
+        </div>
+
+    </div>
+    <%-include('../inc/bottom.ejs',{page:"category"}) %>

@@ -1,0 +1,79 @@
+<%-include('../inc/top.ejs',{page:"profile"}) %>
+
+    <!-- noidung-body -->
+    <div class="container-fluid">
+        <div class="row pt-1">
+            <div class="col-md-6 fw-bold fs-4">
+                Cá nhân
+            </div>
+            </div>
+            <div class="row d-flex justify-content-center">
+                <div class="row d-flex justify-content-center ">
+                    <img src="/images/anh.jpg" alt="" class="rounded-circle" style="width: 150px; height: 150px;">
+                </div>
+                
+
+                <div class="col-md-6">
+                    <div class="col-md-12 mb-3 text-body-tertiary  d-flex justify-content-center">
+                        Thay đổi hình ảnh
+                    </div>
+                    <form action="">
+                        <div class="mb-3">
+                            <div class="d-flex">
+                                <label for="formGroupExampleInput2" class="form-label">Tên tài khoản</label>
+                                <label for="formGroupExampleInput2" class="form-label mx-2 text-body-tertiary">Thay
+                                    đổi</label>
+
+                            </div>
+                            <input type="text" class="form-control" id="formGroupExampleInput2"
+                                placeholder="<%=userLogin.username%>">
+                        </div>
+                        <div class="mb-3">
+                            <div class="d-flex">
+                                <label for="formGroupExampleInput2" class="form-label">Họ và tên</label>
+                                <label for="formGroupExampleInput2" class="form-label mx-2 text-body-tertiary">Thay
+                                    đổi</label>
+
+                            </div>
+                            <input type="text" class="form-control" id="formGroupExampleInput2"
+                                placeholder="<%=userLogin.fullname%>">
+                        </div>
+                        <div class="mb-3">
+                            <div class="d-flex">
+                                <label for="formGroupExampleInput2" class="form-label">Email</label>
+                                <label for="formGroupExampleInput2" class="form-label mx-2 text-body-tertiary">Thay
+                                    đổi</label>
+
+                            </div>
+                            <input type="text" class="form-control" id="formGroupExampleInput2"
+                                placeholder="<%=userLogin.email%>">
+                        </div>
+                        <div class="mb-3">
+                            <div class="d-flex">
+                                <label for="formGroupExampleInput2" class="form-label">Mật khẩu</label>
+                                <label for="formGroupExampleInput2" class="form-label mx-2 text-body-tertiary">Thay
+                                    đổi</label>
+
+                            </div>
+                            <input type="password" class="form-control" id="formGroupExampleInput2"
+                                value="<%=userLogin.password %>">
+                        </div>
+                        
+                        <button class="col-12 btn btn-primary mt-3">Lưu</button>
+                    </form>
+
+                    </div>
+                
+            </div>
+        </div>
+
+
+
+
+        </div>
+
+    </div>
+
+
+    <!-- noidung-body -->
+   <%-include('../inc/bottom.ejs',{page:"profile"}) %>

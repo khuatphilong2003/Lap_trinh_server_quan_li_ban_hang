@@ -1,0 +1,106 @@
+<!-- noidung-body -->
+<!-- Footer -->
+<div class="row" style="margin-top: 50px;">
+    <div class="container-fluid" style="background-color: #323232;">
+        <footer class="py-3 my-4">
+            <ul class="nav justify-content-center border-bottom pb-3 mb-3">
+                <p class="text-white px-2">Khuất Phi Long</p>
+
+                <p class="text-white px-2">Ph26309</p>
+                <p class="text-white px-2">CP17308</p>
+
+            </ul>
+            <p class="text-center text-white">Cao đẳng FPT Polytechnic </p>
+        </footer>
+    </div>
+</div>
+<!-- End of Footer -->
+
+
+
+
+<!-- sildenavar -->
+<div class="offcanvas offcanvas-start bg-dark text-white sidebar-nav" tabindex="-1" id="offcanvasExample"
+    aria-labelledby="offcanvasExampleLabel">
+
+
+    <div class="offcanvas-body p-0">
+        <div class="navbar-dark">
+            <ul class="navbar-nav sidebar">
+                <li>
+                    <div class="text-white small fw-bold text-uppercase px-3 mt-3">
+                        <span class="navbar-toggler-icon me-2" type="button" data-bs-toggle="offcanvas"
+                            data-bs-target="#offcanvasExample" aria-controls="offcanvasExample">
+                        </span>
+                        <span class="me-2">Quản lí bán hàng</span>
+                    </div>
+                </li>
+                <li class="mt-3">
+
+
+
+                    <a href="/" class="nav-link px-3 <%if(page == "home"){%> active <%} %>" >
+                            <span class="me-2">
+                                <i class="fa-solid fa-database"></i>
+                            </span>
+                            <span>
+                                Dashboash
+                            </span>
+                    </a>
+                </li>
+
+                <li>
+                    <div class="text-white-50 small fw-bold text-uppercase px-3 mt-3">
+                        Quản lí sản phẩm
+                    </div>
+                </li>
+                <li>
+                    <a href="/product" class="nav-link px-3 <%if(page == "product"){%> active <%} %>">
+                        <span class="me-2">
+                            <i class="fa-solid fa-bag-shopping"></i>
+                        </span>
+                        <span>
+                            Sản phẩm
+                        </span>
+                    </a>
+                </li>
+                <li>
+                    <a href="/category" class="nav-link px-3 <%if(page == "category"){%> active <%} %>">
+                        <span class="me-2">
+                            <i class="fa-solid fa-tag"></i>
+                        </span>
+                        <span>
+                            Thể loại
+                        </span>
+                    </a>
+                </li>
+
+                <li>
+                    <div class="text-white-50 small fw-bold text-uppercase px-3 mt-3">
+                        Quản lí tài khoản
+                    </div>
+                </li>
+                <li>
+                    <a href="/manager" class="nav-link px-3 <%if(page == "manager"){%> active <%} %>">
+                        <span class="me-2">
+                            <i class="fa-solid fa-users"></i>
+                        </span>
+                        <span>
+                            Khách hàng
+                        </span>
+                    </a>
+                </li>
+
+
+            </ul>
+        </div>
+    </div>
+</div>
+<!-- sildenavar -->
+<script src="/bootstrap-5.3.0-alpha1-dist/js//bootstrap.bundle.min.js"></script>
+<script src="/vendor/Chart.min.js"></script>
+<script src="/javascripts/chart-area-demo.js"></script>
+<script src="javascripts/chart-bar-demo.js"></script>
+</body>
+
+</html>

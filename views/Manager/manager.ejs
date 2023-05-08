@@ -1,0 +1,167 @@
+<%-include('../inc/top.ejs',{page:"manager"})%>
+
+    <!-- noidung-body -->
+    <div class="container-fluid">
+        <div class="row pt-1">
+            <div class="col-md-6 fw-bold fs-4">
+                Khách hàng
+            </div>
+
+
+        </div>
+
+        <div class="row bg-dark-subtle m-3 p-3" style="border-radius: 5px;">
+            <div class="container-fluid ">
+                <form class="row g-3 d-flex justify-content-center" method="get">
+                    
+                    <div class="col-md-4">
+                        <input type="" class="form-control" id="inputPassword2" placeholder="Nhập tên tài khoản"
+                            name="name">
+                    </div>
+                    
+                    <button type="submit" class="btn btn-primary col-md-2 mb-3">Tìm kiếm</button>
+                </form>
+            </div>
+            <div style="font-size: 20px; font-weight: bold;">
+                Sắp xếp theo
+            </div>
+            <div class="my-2">
+                <form action="" method="get" class="row d-flex justify-content-start g-3">
+                    <div class="col-auto">
+                        <select class="form-select" name="cot" aria-label="Default select example">
+                           <option value="choncot"
+                           <%
+                           if(cot =="choncot"){%> selected <%}
+                           %>
+                           >Chọn cột</option>
+                           <option value="fullname"
+                           <%
+                           if(cot == "fullname"){%> selected <%}
+                           %>
+                           >Họ và tên</option>
+                           <option value="username"
+                           <%
+                           if(cot == "username"){%> selected <%}
+                           %>
+                           >Tên đăng nhập</option>
+                        </select>
+                    </div>
+
+                    <button type="submit" name="giam" value="-1" class="btn btn-primary col-md-1 mb-3 mx-3">Giảm
+                        dần</button>
+                    <button type="submit" name="tang" value="1" class="btn btn-primary col-md-1 mb-3">Tăng dần</button>
+                </form>
+
+            </div>
+        </div>
+
+        
+
+
+        <div class="d-flex justify-content-center">
+            <%=msg %>
+        </div>
+       
+
+
+        <div class="container-fluid mt-5">
+            <div class="row">
+                <div class="d-flex justify-content-end">
+                    <p class="mt-1">Xem</p>
+                    <div class="mx-2">
+                        <select class="form-select" aria-label="Default select example">
+                            <option selected>10</option>
+                            <option value="1">20</option>
+                            <option value="2">30</option>
+                        </select>
+                    </div>
+                    <p class="mt-1">mục</p>
+                </div>
+                <table class="table table-hover">
+                    <thead>
+                        <tr class="bg-primary text-white">
+                            <th scope="col">Id</th>
+                            <th scope="col">Ảnh</th>
+                            <th scope="col">Họ và tên</th>
+                            <th scope="col">Tên tài khoản</th>
+                            <th scope="col">Loại tài khoản</th>
+                            <th scope="col">Email</th>
+                            <th scope="col"></th>
+
+
+
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <% listUser.forEach((item)=>{
+                            %>
+                            <tr>
+                                <th scope="row">
+                                    <%=item.id%>
+                                </th>
+                                <td>
+                                    <img src="<%=item.img%>" alt="" style="height: 60px;">
+                                </td>
+                                <td>
+                                    <%=item.fullname%>
+                                </td>
+                                <td>
+                                    <%=item.username%>
+                                </td>
+                                <td>
+                                    <%=item.role%>
+                                </td>
+                                <td>
+                                    <%=item.email%>
+                                </td>
+                                <td>
+                                    <div class="d-flex justify-content-center">
+                                        <span>
+                                            <a href="#">
+                                                <i class="fa-solid fa-trash"
+                                                    style="color: #ff4000;margin-right: 15px; "></i>
+                                            </a>
+                                        </span>
+                                        <span>
+                                            <a href="">
+                                                <i class="fa-sharp fa-solid fa-pen"></i>
+                                            </a>
+                                        </span>
+                                    </div>
+
+                                </td>
+
+                            </tr>
+                            <% }); %>
+
+
+
+
+                    </tbody>
+                </table>
+                <div class="row">
+                    <div class="col">
+                        Bạn đang xem 30 trên tổng số 100000
+                    </div>
+                    <div class="col d-flex justify-content-end">
+                        <nav aria-label="...">
+                            <ul class="pagination">
+                                <li class="page-item disabled">
+                                    <a class="page-link">Previous</a>
+                                </li>
+                                <li class="page-item"><a class="page-link" href="#">1</a></li>
+                                <li class="page-item active" aria-current="page">
+                                    <a class="page-link" href="#">2</a>
+                                </li>
+                                <li class="page-item"><a class="page-link" href="#">3</a></li>
+                                <li class="page-item">
+                                    <a class="page-link" href="#">Next</a>
+                                </li>
+                            </ul>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+<%-include('../inc/bottom.ejs',{page:"manager"})%>

@@ -1,0 +1,64 @@
+<%-include('../inc/top.ejs',{page:"editProfile"}) %>
+
+    <!-- noidung-body -->
+    <div class="container-fluid">
+        <% if(thongBao !="Sửa thành công" && thongBao.length != 0){ %>
+            <div class="bg-danger p-2 text-white d-flex justify-content-center">
+                <%=thongBao%>
+            </div>
+            <% } %>
+            
+            <% if(thongBao =="Sửa thành công" ){ %>
+                <div class="bg-primary p-2 text-white d-flex justify-content-center">
+                    <%=thongBao%>
+                </div>
+                <% } %>
+                <div class="row pt-1">
+                    <div class="col-md-6 fw-bold fs-4">
+                        Sửa sản phẩm
+                    </div>
+                </div>
+                <div class="bg-dark-subtle pb-4 mt-5 d-flex justify-content-center" style="border-radius: 5px;">
+                    <div style="width: 300px; margin-top: 20px;">
+                        <form method="post" enctype="multipart/form-data">
+                            <div class="mb-3">
+                                <label for="exampleInputEmail1" class="form-label">Tên sản phẩm</label>
+                                <input type="text" class="form-control" placeholder="Nhập tên sản phẩm" name="name" value="<%=objSPE.name%>">
+                            </div>
+                            <div class="mb-3">
+                                <label for="exampleInputEmail1" class="form-label">Giá sản phẩm</label>
+                                <input type="number" class="form-control" placeholder="Nhập giá sản phẩm" name="price" value="<%=objSPE.price%>">
+                            </div>
+                            <div class="mb-3">
+                                <textarea class="form-control" id="exampleFormControlTextarea1" rows="7"
+                                    placeholder="Mô tả sản phẩm" name="des" ><%=objSPE.des%></textarea>
+
+                            </div>
+                            <div class=" mb-4">
+                                <label for="formFile" class="form-label">Chọn ảnh</label>
+                                <input class="form-control" type="file" id="image" name="img">
+                            </div>
+
+                            <label for="exampleInputEmail1" class="form-label">Thể loại</label>
+                            <select class="form-select" name="theloai">
+                                <% listCategory.forEach((item)=>{
+                                    let selected = "";
+                                    if(String(item.id) == String(objSPE.id_category)){
+                                        selected = " selected "
+                                    }
+                                    %>
+                                    <option <%=selected%> value="<%=item.id%>">
+                                        <%=item.name%>
+                                    </option>
+                                    <% }) %>
+                            </select>
+                            <button type="submit" class="btn btn-primary mt-3" style="width: 300px;">Lưu</button>
+                        </form>
+                    </div>
+
+                </div>
+
+    </div>
+
+    <!-- noidung-body -->
+    <%-include('../inc/bottom.ejs',{page:"product"}) %>

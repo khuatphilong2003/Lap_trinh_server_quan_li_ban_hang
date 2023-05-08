@@ -1,0 +1,260 @@
+<%-include('../inc/top.ejs',{page:"product"}) %>
+
+    <!-- noidung-body -->
+    <div class="container-fluid">
+        <div class="row pt-1">
+            <div class="col-md-6 fw-bold fs-4">
+                Sản phẩm
+            </div>
+
+            <div class="col-md-6 d-flex justify-content-end ">
+                
+
+                <a class="btn btn-primary rounded-pill" href="product/addProduct">
+                    <span>
+                        <i class="fa-sharp fa-regular fa-plus"></i>
+                    </span>
+                    Thêm mới
+
+                </a>
+            </div>
+        </div>
+
+        <div class="row bg-dark-subtle m-3 p-3" style="border-radius: 5px;">
+            <div class="container-fluid ">
+                <form class="row g-3" method="get">
+
+                    <div class="col-auto">
+                        <input type="" class="form-control" id="inputPassword2" placeholder="Nhập tên" name="name">
+                    </div>
+
+                    <button type="submit" class="btn btn-primary col-auto mb-3">Tìm kiếm</button>
+                </form>
+            </div>
+            <div style="font-size: 20px; font-weight: bold;">
+                Bộ lọc
+            </div>
+
+            <div class="d-flex justify-content-start my-1">
+                <form class="d-flex" method="get">
+                    <select class="form-select" name="theloai">
+                        <option value="All">All</option>
+                        <% listCategory.forEach((item)=>{
+                            %>
+                            <option value="<%=item.id%>" <% if(item.id==theloai){%> selected <%} %>
+                                    >
+                                    <%=item.name%>
+                            </option>
+                            <% }) %>
+
+                    </select>
+                    <button type="submit" class="btn btn-primary mx-2">Lọc </button>
+                </form>
+            </div>
+        </div>
+        <div class="container-fluid mt-5">
+            <div class="row">
+                <div class="d-flex justify-content-end">
+                    <p class="mt-1">Xem</p>
+                    <div class="mx-2">
+                        <select id="limit" class="form-select" aria-label="Default select example">
+                            <option selected>Chọn</option>
+                            <option value="5">5</option>
+                            <option value="10">10</option>
+                        </select>
+                    </div>
+                    <p class="mt-1">mục</p>
+                </div>
+
+                <table class="table table-hover">
+                    <thead>
+                        <tr class="bg-primary text-white">
+                            <th scope="col">Stt</th>
+                            <th scope="col">Ảnh</th>
+                            <th scope="col" onClick="sortName()">Tên</th>
+                            <th scope="col" onclick="sortPrice()">Giá</th>
+                            <th scope="col">Loại</th>
+                            <th scope="col">Mô tả</th>
+                            <th scope="col">Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+
+
+                        <% listProduct.forEach((item,index)=>{
+                            %>
+                            <tr>
+                                <th scope="row">
+                                    <%=index+1%>
+                                </th>
+
+                                <td>
+                                    <img src="<%=item.image%>" style="height: 100px;" alt="">
+                                </td>
+                                <td>
+                                    <a href="product/infoProduct/<%=item.id%>"
+                                        style="text-decoration: none;color: black;">
+                                        <%=item.name%>
+                                    </a>
+                                </td>
+
+                                <td>
+                                    <%=item.price%>
+                                </td>
+                                <td>
+                                    <%=item.id_category.name%>
+                                </td>
+                                <td>
+                                    <%=item.des%>
+                                </td>
+                                <td>
+
+                                    <a data-bs-toggle="modal" data-bs-target="#Modal_delete" data-bs-id="<%=item.id%>">
+                                        <i class="fa-solid fa-trash" style="color: #ff4000;margin-right: 20px; "></i>
+                                    </a>
+
+                                    <a href="product/editProduct/<%=item.id%>">
+                                        <i class="fa-sharp fa-solid fa-pen"></i>
+                                    </a>
+
+                                </td>
+
+                            </tr>
+                            <% }); %>
+
+
+
+                    </tbody>
+                </table>
+                <div class="d-flex justify-content-center">
+                    <%=msg %>
+
+                </div>
+                <div class="row">
+                    <div class="col">
+                        Bạn đang xem <%=listProduct.length%> trên tổng số <%=list.length%>
+                    </div>
+                    <div class="col d-flex justify-content-end">
+                        <nav aria-label="...">
+                            <ul class="pagination">
+                                <% for(let i=0;i<demTrang;i++){ %>
+                                    <li class="page-item"><a class="page-link" href="/product?page=<%=i+1%>">
+                                            <%=i+1%>
+                                        </a></li>
+                                    <% } %>
+                            </ul>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- noidung-body -->
+    <!-- Modal -->
+    <div class="modal fade" id="Modal_delete" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="exampleModalLabel">Xóa sản phẩm</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    Bạn có chắc chắn muốn xóa
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Đóng</button>
+                    <button type="button" id="btnDelete" class="btn btn-primary">Đồng ý</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="exampleModalLabel">Thêm sản phẩm</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form method="post" enctype="multipart/form-data">
+                        <div class="form-floating mb-3">
+                            <input type="text" class="form-control" id="floatingText" placeholder="jhondoe" name="name">
+                            <label for="floatingText">Tên sản phẩm</label>
+                        </div>
+                        <div class="form-floating mb-3">
+                            <input type="text" class="form-control" id="floatingText" placeholder="jhondoe"
+                                name="price">
+                            <label for="floatingText">Giả tiền</label>
+                        </div>
+                        <div class="mb-3">
+                            <textarea class="form-control" id="exampleFormControlTextarea1" rows="7"
+                                placeholder="Mô tả sản phẩm" name="des"></textarea>
+                        </div>
+                        <div class=" mb-4">
+                            <label for="formFile" class="form-label">Chọn ảnh</label>
+                            <input class="form-control" type="file" id="image" name="img">
+                        </div>
+                        <select class="form-select" name="theloai">
+
+                            <% listCategory.forEach((item)=>{
+                                %>
+                                <option value="<%=item.id%>">
+                                    <%=item.name%>
+                                </option>
+                                <% }) %>
+                        </select>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Đóng</button>
+                    <button type="submit" class="btn text-white btn-primary" id="btnSava">Lưu</button>
+                </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <form name="delete-form" method="POST"></form>
+    <script>
+
+        var selectLimit = document.getElementById('limit');
+
+        selectLimit.addEventListener('change', function () {
+            var limit = this.value;
+
+            // Thay đổi URL của trang web để thêm tham số giới hạn số lượng bản ghi vào URL
+            var newUrl = window.location.pathname + '?limit=' + limit;
+            window.location.href = newUrl;
+        });
+
+        function sortName() {
+            const sortOrder = '<%= sortOrder === 1 ? "desc" : "asc" %>';
+            window.location.href = `/product?sort=name&order=${sortOrder}`;
+        }
+        function sortPrice() {
+            const sortOrder = '<%= sortOrder === 1 ? "desc" : "asc" %>';
+            window.location.href = `/product?sort=price&order=${sortOrder}`;
+        }
+    </script>
+    <script>
+        var productId;
+        var deleteForm = document.forms['delete-form'];
+        var btnDelete = document.getElementById('btnDelete');
+
+        const Modal_delete = document.getElementById('Modal_delete')
+        if (Modal_delete) {
+            Modal_delete.addEventListener('show.bs.modal', event => {
+                // Button that triggered the modal
+                const button = event.relatedTarget
+                // Extract info from data-bs-* attributes
+                productId = button.getAttribute('data-bs-id');
+            })
+            btnDelete.onclick = () => {
+                deleteForm.action = '/product/delete/' + productId;
+                deleteForm.submit();
+            }
+        }
+    </script>
+    <%-include('../inc/bottom.ejs',{page:"product"}) %>

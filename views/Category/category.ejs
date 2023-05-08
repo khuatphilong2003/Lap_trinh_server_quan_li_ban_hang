@@ -1,0 +1,160 @@
+<%-include('../inc/top.ejs',{page:"category"}) %>
+    <!-- noidung-body -->
+    <div class="container-fluid">
+        <div class="row pt-1">
+            <div class="col-md-6 fw-bold fs-4">
+                Thể loại
+            </div>
+
+            <div class="col-md-6 d-flex justify-content-end ">
+
+                <div class="btn btn-primary rounded-pill" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                    <span>
+                        <i class="fa-sharp fa-regular fa-plus"></i>
+                    </span>
+                    Thêm mới
+
+                </div>
+            </div>
+        </div>
+
+        <div class="row bg-dark-subtle m-3 p-3" style="border-radius: 5px;">
+            <div class="container-fluid ">
+                <form class="row g-3" method="get">
+                   
+                    <div class="col-auto">
+                        <input type="" class="form-control" id="inputPassword2" placeholder="Nhập tên" name="name">
+                    </div>
+                    
+                    <button type="submit" class="btn btn-primary col-auto ">Tìm kiếm</button>
+                </form>
+            </div>
+            <div style="font-size: 20px;color: black;font-weight: bold; margin-top: 10px;">
+                Sắp xếp
+            </div>
+            <div class="my-2">
+                <form action="" method="get"  class="row d-flex justify-content-start g-3">
+                    <div class="col-md-1">
+                        <select class="form-select" name="cot" aria-label="Default select example">
+                            <option value="all" <% if(cot=="all" ){%> selected <%} %>
+                                    >Chọn cột</option>
+                            <option value="_id" <% if(cot=="_id" ){%> selected <%} %>
+                                    >Id</option>
+                            <option value="name" <% if(cot=="name" ){%> selected <%} %>
+                                    >Tên</option>
+                        </select>
+                    </div>
+
+                    <button type="submit" name="giam" value="-1" class="btn btn-primary col-md-1 mb-3 mx-3">Giảm
+                        dần</button>
+                    <button type="submit" name="tang" value="1" class="btn btn-primary col-md-1 mb-3">Tăng dần</button>
+                </form>
+
+            </div>
+        </div>
+        <div class="container-fluid mt-5">
+            <div class="row">
+                <div class="d-flex justify-content-end">
+                    <p class="mt-1">Xem</p>
+                    <div class="mx-2">
+                        <select class="form-select" aria-label="Default select example">
+                            <option selected>10</option>
+                            <option value="1">20</option>
+                            <option value="2">30</option>
+                        </select>
+                    </div>
+                    <p class="mt-1">mục</p>
+                </div>
+                <table class="table table-hover">
+                    <thead>
+                        <tr class="bg-primary text-white">
+                            <th scope="col">Stt</th>
+                            <th scope="col">Ảnh
+                                
+                            </th>
+                            <th scope="col">Tên</th>
+                            <th scope="col">Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <% listCategory.forEach((item,index)=>{
+                            %>
+                            <tr>
+                                <th><%=index+1 %></th>
+                               
+                                <th>
+                                    <img src="<%=item.image%>" style="height: 50px;" alt="">
+                                    </th>
+                                <td>
+                                    <%=item.name%>
+                                </td>
+
+                                <td>
+                                
+                                    <a href="category/editCategory/<%=item.id%>">
+                                        <i class="fa-sharp fa-solid fa-pen"></i>
+                                    </a>
+                                </td>
+
+                            </tr>
+                            <% }); %>
+                    </tbody>
+                </table>
+                <div class="row my-5">
+                    <div class="col">
+                        Bạn đang xem 30 trên tổng số 100000
+                    </div>
+                    <div class="col d-flex justify-content-end">
+                        <nav aria-label="...">
+                            <ul class="pagination">
+                                <li class="page-item disabled">
+                                    <a class="page-link">Previous</a>
+                                </li>
+                                <li class="page-item"><a class="page-link" href="#">1</a></li>
+                                <li class="page-item active" aria-current="page">
+                                    <a class="page-link" href="#">2</a>
+                                </li>
+                                <li class="page-item"><a class="page-link" href="#">3</a></li>
+                                <li class="page-item">
+                                    <a class="page-link" href="#">Next</a>
+                                </li>
+                            </ul>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <%-include('../inc/bottom.ejs',{page:"category"}) %>
+
+
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="exampleModalLabel">Thêm loại sản phẩm</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form method="post" enctype="multipart/form-data">
+                        <div class="form-floating mb-3">
+                            <input type="text" class="form-control" id="floatingText" placeholder="jhondoe" name="name">
+                            <label for="floatingText">Tên loại sản phẩm</label>
+                        </div>
+
+                        <div class=" mb-4">
+                            <label for="formFile" class="form-label">Chọn ảnh</label>
+                            <input class="form-control" type="file" id="image" name="img">
+                        </div>
+
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Đóng</button>
+                            <button type="submit" class="btn text-white btn-primary" id="btnSava">Lưu</button>
+                        </div>
+                    </form>
+                </div>
+
+            </div>
+        </div>
+    </div>
+

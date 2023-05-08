@@ -1,0 +1,57 @@
+<%-include('../inc/top.ejs',{page:"editProfile"}) %>
+<div class="container-fluid">
+            <% 
+                if(msg == "Thêm thành công"){
+                    %>
+                    <div class="bg-primary p-2 text-white d-flex justify-content-center">
+                <%=msg%>
+            </div>
+                    <%
+                }
+                %>
+            <div class="row pt-1">
+                <div class="col-md-6 fw-bold fs-4">
+                    Thêm sản phẩm
+                </div>
+            </div>
+
+            <div class="bg-dark-subtle pb-4 mt-5 d-flex justify-content-center" style="border-radius: 5px;">
+                <div style="width: 300px; margin-top: 20px;">
+                    <form method="post" enctype="multipart/form-data">
+                        <div class="mb-3">
+                            <label for="exampleInputEmail1" class="form-label">Tên sản phẩm</label>
+                            <input type="text" class="form-control" placeholder="Nhập tên sản phẩm" name="name">
+                        </div>
+                        <div class="mb-3">
+                            <label for="exampleInputEmail1" class="form-label">Giá sản phẩm</label>
+                            <input type="number" class="form-control" placeholder="Nhập giá sản phẩm" name="price" >
+                        </div>
+                        <div class="mb-3">
+                            <textarea class="form-control" id="exampleFormControlTextarea1" rows="7"
+                                placeholder="Mô tả sản phẩm" name="des" ></textarea>
+
+                        </div>
+                        <div class=" mb-4">
+                            <label for="formFile" class="form-label">Chọn ảnh</label>
+                            <input class="form-control" type="file" id="image" name="img">
+                        </div>
+
+                        <label for="exampleInputEmail1" class="form-label">Thể loại</label>
+                        <select class="form-select" name="theloai">
+
+                            <% listCategory.forEach((item)=>{
+                                %>
+                                <option value="<%=item.id%>">
+                                    <%=item.name%>
+                                </option>
+                                <% }) %>
+                        </select>
+                        
+                        <button type="submit" class="btn btn-primary mt-3" style="width: 300px;">Lưu</button>
+                    </form>
+                </div>
+
+            </div>
+
+</div>
+<%-include('../inc/bottom.ejs',{page:"product"}) %>
